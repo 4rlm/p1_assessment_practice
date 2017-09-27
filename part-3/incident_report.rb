@@ -1,4 +1,8 @@
+require_relative 'track_damage.rb'
+
 class IncidentReport
+  include TrackDamage
+
   attr_reader :description, :reporter
   attr_accessor :assigned_employee
 
@@ -8,16 +12,4 @@ class IncidentReport
     @resolved = false
   end
 
-  def resolved?
-    !!@resolved
-  end
-
-  def close
-    @resolved = true
-  end
-
-  def assigned?
-    !!@assigned_employee
-  end
 end
-

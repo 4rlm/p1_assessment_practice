@@ -1,4 +1,10 @@
+require_relative 'track_reservation.rb'
+require_relative 'track_damage.rb'
+
 class SleepingBag
+  include TrackReservation
+  include TrackDamage
+
   attr_reader :style, :size, :shell
 
   def initialize(args = {})
@@ -7,31 +13,4 @@ class SleepingBag
     @shell = args.fetch(:shell) { "nylon" }
   end
 
-  def reserve
-    @reserved = true
-  end
-
-  def end_reservation
-    @reserved = false
-  end
-
-  def reserved?
-    @reserved
-  end
-
-  def available?
-    !reserved?
-  end
-
-  def damaged?
-    @damaged
-  end
-
-  def record_damage
-    @damaged = true
-  end
-
-  def repair
-    @damaged = false
-  end
 end
