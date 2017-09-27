@@ -1,5 +1,8 @@
+require_relative 'track_reservation.rb'
+
 class Campsite
-  attr_reader :location, :square_footage
+  include TrackReservation
+  attr_reader :location, :square_footage, :power, :water
   attr_accessor :assigned_employee
 
   def initialize(args = {})
@@ -15,22 +18,6 @@ class Campsite
 
   def water?
     @water
-  end
-
-  def reserve
-    @reserved = true
-  end
-
-  def end_reservation
-    @reserved = false
-  end
-
-  def reserved?
-    @reserved
-  end
-
-  def available?
-    !reserved?
   end
 
   def assigned?
